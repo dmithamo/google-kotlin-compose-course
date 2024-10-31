@@ -1,6 +1,6 @@
 
 */.gitignore
-.gradle
+**/**/.gradle
 .DS_Store
 
 # built application files
