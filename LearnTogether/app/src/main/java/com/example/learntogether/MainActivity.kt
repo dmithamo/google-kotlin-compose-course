@@ -7,7 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,11 +52,15 @@ fun Tutorial(
     notes: String,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier
+    ) {
         TutorialBanner(banner, modifier)
-        TutorialTitle(title, modifier)
-        TutorialDescription(description, modifier)
-        TutorialNotes(notes, modifier)
+        Column(modifier = modifier.verticalScroll(state = rememberScrollState())) {
+            TutorialTitle(title, modifier)
+            TutorialDescription(description, modifier)
+            TutorialNotes(notes, modifier)
+        }
     }
 }
 
@@ -74,7 +82,7 @@ fun TutorialPreview() {
 @Composable
 fun TutorialBanner(banner: Painter, modifier: Modifier = Modifier) {
     Image(
-        painter = banner, contentDescription = null
+        painter = banner, contentDescription = null, modifier = modifier.fillMaxWidth()
     )
 }
 
@@ -89,7 +97,7 @@ fun TutorialBannerPreview() {
 @Composable
 fun TutorialTitle(title: String, modifier: Modifier = Modifier) {
     Text(
-        text = title, fontSize = 24.sp, lineHeight = 32.sp, modifier = modifier.padding(2.dp)
+        text = title, fontSize = 24.sp, modifier = modifier.padding(16.dp)
     )
 }
 
@@ -103,7 +111,7 @@ fun TutorialTitlePreview() {
 
 @Composable
 fun TutorialDescription(description: String, modifier: Modifier = Modifier) {
-    Text(text = description, fontSize = 16.sp, modifier = modifier.padding(2.dp))
+    Text(text = description, textAlign = TextAlign.Justify, modifier = modifier.padding(16.dp))
 }
 
 @Composable
@@ -117,7 +125,7 @@ fun TutorialDescriptionPreview() {
 @Composable
 fun TutorialNotes(notes: String, modifier: Modifier = Modifier) {
     Text(
-        text = notes, fontSize = 12.sp, modifier = modifier.padding(2.dp)
+        text = notes, textAlign = TextAlign.Justify, modifier = modifier.padding(16.dp)
     )
 }
 
