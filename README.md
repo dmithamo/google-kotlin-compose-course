@@ -4,7 +4,7 @@
 
 This is an attempt at learning mobile development using Kotlin, by coding along to Google.
 
-The app is no more than a composition of a few Compose elements to make a card that says Happy
+The collection of apps in here are relatively small, such as `HappyBirthday` no more than a composition of a few Compose elements to make a card that says Happy
 Birthday to me.
 Very uninspiring, and possibly not belonging in version control, but I would like to look back on
 the first app I ever write with Kotlin, uninspiring as it is.
